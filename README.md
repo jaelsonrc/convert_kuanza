@@ -1,6 +1,8 @@
-# mvc_kuanza
+# convert kuanza
 
 A new Flutter project.
+Projeto para calcular o câmbio do kuanza usando api do wize e standbank como base... ainda em construçao..
+
 
 ## Getting Started
 
