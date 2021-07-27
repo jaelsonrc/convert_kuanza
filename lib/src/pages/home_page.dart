@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvc_kuanza/src/controllers/home_controller.dart';
+import 'package:mvc_kuanza/src/domain/model/data_model.dart';
 import 'package:mvc_kuanza/src/shared/themes/app_colors.dart';
 import 'package:mvc_kuanza/src/shared/themes/app_text_styles.dart';
 import 'package:mvc_kuanza/src/shared/widgets/input_text_widget.dart';
+import 'package:mvc_kuanza/src/shared/widgets/label_text_widget.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -44,6 +46,9 @@ class HomePage extends GetView<HomeController> {
                   label: "Dollar \$",
                   icon: Icons.paid,
                   onChanged: (value) {},
+                ),
+                LabelTextWidget(
+                  data: DataModel(name: "Euro ", value: 2500.00, label: "€ "),
                 ),
               ],
             ),
