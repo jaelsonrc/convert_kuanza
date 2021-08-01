@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mvc_kuanza/src/lang/translation_service.dart';
 import 'package:mvc_kuanza/src/routes/app_pages.dart';
 import 'package:mvc_kuanza/src/shared/logger/logger_utils.dart';
 import 'package:mvc_kuanza/src/shared/themes/app_colors.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(KuanzaApp());
 }
 

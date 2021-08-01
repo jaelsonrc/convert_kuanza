@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mvc_kuanza/src/shared/themes/app_colors.dart';
 import 'package:mvc_kuanza/src/shared/themes/app_text_styles.dart';
 
@@ -8,14 +9,16 @@ class InputTextWidget extends StatelessWidget {
   final String? initalValue;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
-  final void Function(String value) onChanged;
+  final void Function(String? value)? onFieldSubmitted;
+  final void Function(String)? onChanged;
   const InputTextWidget(
       {Key? key,
       required this.label,
       required this.icon,
-      required this.onChanged,
+      this.onFieldSubmitted,
       this.initalValue,
       this.validator,
+      this.onChanged,
       this.controller})
       : super(key: key);
 
@@ -29,7 +32,12 @@ class InputTextWidget extends StatelessWidget {
             controller: controller,
             initialValue: initalValue,
             validator: validator,
+            onFieldSubmitted: onFieldSubmitted,
             onChanged: onChanged,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp('[0-9.]')),
+            ],
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
             style: TextStyles.input,
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.zero,
