@@ -12,7 +12,7 @@ class HomeController extends GetxController {
   final box = GetStorage();
   final numberFormat = NumberFormat.decimalPattern('pt_PT');
   var status = LoadActionEnum.LOADING.obs;
-  var rate = 4.0.obs;
+  var rate = 2.56.obs;
   final inputKuanza = TextEditingController();
   final inputEuro = TextEditingController();
   final inputDollar = TextEditingController();
@@ -28,7 +28,7 @@ class HomeController extends GetxController {
   void onInit() {
     final rate = box.read('rate') != null
         ? double.parse(box.read('rate').toString())
-        : 4.0;
+        : this.rate.value;
     this.rate.value = rate;
     getData(null).then((value) {
       status.value = LoadActionEnum.SUCESS;
@@ -65,7 +65,7 @@ class HomeController extends GetxController {
 
   setKuanza(String? value) {
     if (value == null || value.length == 0) return;
-    //  value = value.split(" ").join("");
+
     double kz = double.parse(value.replaceAll(new RegExp(r'[^0-9]'), ''));
     kz = kz - (kz * getRate());
     inputDollar.text = numberFormat.format(kz / _kuanza!.dollar);
@@ -127,7 +127,7 @@ class HomeController extends GetxController {
         value.indexOf('.') > 0 ? double.parse(value) : int.parse(value);
     inputEuro.text = numberFormat.format(number);
     inputEuro.selection = TextSelection.fromPosition(
-      TextPosition(offset: inputKuanza.text.length),
+      TextPosition(offset: inputEuro.text.length),
     );
   }
 
@@ -138,7 +138,7 @@ class HomeController extends GetxController {
         value.indexOf('.') > 0 ? double.parse(value) : int.parse(value);
     inputDollar.text = numberFormat.format(number);
     inputDollar.selection = TextSelection.fromPosition(
-      TextPosition(offset: inputKuanza.text.length),
+      TextPosition(offset: inputDollar.text.length),
     );
   }
 
@@ -152,8 +152,6 @@ class HomeController extends GetxController {
 
   void calculateRate() {
     setKuanza(inputKuanza.text);
-    setDollar(inputDollar.text);
-    setEuro(inputEuro.text);
   }
 
   void clearAll() {

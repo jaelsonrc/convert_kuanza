@@ -34,9 +34,6 @@ class InputTextWidget extends StatelessWidget {
             validator: validator,
             onFieldSubmitted: onFieldSubmitted,
             onChanged: onChanged,
-            inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp('[0-9.]')),
-            ],
             keyboardType: TextInputType.numberWithOptions(decimal: true),
             style: TextStyles.input,
             decoration: InputDecoration(

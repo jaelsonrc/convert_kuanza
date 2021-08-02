@@ -5,10 +5,20 @@ import 'package:mvc_kuanza/src/lang/translation_service.dart';
 import 'package:mvc_kuanza/src/routes/app_pages.dart';
 import 'package:mvc_kuanza/src/shared/logger/logger_utils.dart';
 import 'package:mvc_kuanza/src/shared/themes/app_colors.dart';
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 
 void main() async {
   await GetStorage.init();
   runApp(KuanzaApp());
+  doWhenWindowReady(() {
+    final win = appWindow;
+    final initialSize = Size(800, 800);
+    win.minSize = initialSize;
+    win.size = initialSize;
+    win.alignment = Alignment.center;
+    win.title = "Kuanza Convert";
+    win.show();
+  });
 }
 
 class KuanzaApp extends StatelessWidget {
