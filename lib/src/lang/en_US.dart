@@ -1,5 +1,5 @@
 const Map<String, String> en_US = {
-  'title': "Kuanza Convert",
+  'title': "kwanza Convert",
   'settings': "Settings",
   'setting': "Setting",
   'fee': 'Fee',
