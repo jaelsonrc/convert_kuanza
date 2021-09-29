@@ -1,5 +1,5 @@
 const Map<String, String> pt_BR = {
-  'title': "Kuanza Convert",
+  'title': "kwanza Convert",
   'settings': "Ajustes",
   'setting': "Configuração",
   'fee': 'Taxa',
